@@ -13,7 +13,7 @@ public class FunRestController {
 
     //expose "/" endpoint return "Hello World"
     @GetMapping
-    public String   sayHello() {
+    public String sayHello() {
         return firstValue;
     }
 
