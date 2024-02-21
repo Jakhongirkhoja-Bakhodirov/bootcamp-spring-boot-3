@@ -1,7 +1,8 @@
 package com.jakhongir.springboot.demo.mycoolapp.rest;
 
-import com.career.Coach;
+import com.jakhongir.springboot.demo.mycoolapp.common.Coach;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,13 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
     private Coach myCoach;
 
-//    @Autowired
-//    public DemoController(Coach theCoach) {
-//        myCoach = theCoach;
-//    }
-
     @Autowired
-    public void setMyCoach(Coach theCoach) {
+    public DemoController(@Qualifier("tennisCoach") Coach theCoach) {
         myCoach = theCoach;
     }
 

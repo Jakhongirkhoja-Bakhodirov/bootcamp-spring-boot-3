@@ -1,6 +1,6 @@
-package com.career;
+package com.jakhongir.springboot.demo.mycoolapp.common;
 
-import com.career.Coach;
+import com.jakhongir.springboot.demo.mycoolapp.common.Coach;
 import org.springframework.stereotype.Component;
 
 @Component
