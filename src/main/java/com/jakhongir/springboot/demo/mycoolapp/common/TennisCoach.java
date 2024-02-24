@@ -12,6 +12,7 @@ public class TennisCoach implements Coach {
         System.out.println("In constructor: " + getClass().getSimpleName());
     }
 
+    /* *
     //Define our init method
     @PostConstruct
     public void doMyStartupStuff() {
@@ -23,6 +24,7 @@ public class TennisCoach implements Coach {
     public void doMyCleanUpStuff() {
         System.out.println("In doMyCleanUpStuff(): " + getClass().getSimpleName());
     }
+     */
 
     @Override
     public String getDailyWorkout() {
