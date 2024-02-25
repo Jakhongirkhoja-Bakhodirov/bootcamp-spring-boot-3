@@ -3,8 +3,10 @@ package com.jakhongir.springboot.demo.mycoolapp.dao;
 import com.jakhongir.springboot.demo.mycoolapp.entity.Student;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+@Repository
 public class StudentDAOImple implements StudentDAO {
     //define fields for entity manager
     private EntityManager entityManager;
@@ -19,6 +21,7 @@ public class StudentDAOImple implements StudentDAO {
     @Override
     @Transactional
     public void save(Student theStudent) {
+        System.out.println("Entity Manager is working");
         entityManager.persist(theStudent);
     }
 }
