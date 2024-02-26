@@ -22,6 +22,7 @@ public class Student {
 
     // define constructors
     public Student(String firstName, String lastName, String email) {
+        System.out.println("Student cons");
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -44,7 +45,7 @@ public class Student {
         this.email = email;
     }
 
-    public Number getId() {
+    public Integer getId() {
         return id;
     }
 
@@ -69,5 +70,8 @@ public class Student {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    public Student() {
     }
 }
