@@ -23,7 +23,14 @@ public class MycoolappApplication {
             readStudent(studentDAO);
             queryForStudents(studentDAO);
             updateStudent(studentDAO);
+            deleteStudent(studentDAO);
         };
+    }
+
+    private void deleteStudent(StudentDAO studentDAO) {
+        int studentId = 2;
+        System.out.println("Getting student with id: " + studentId);
+        studentDAO.delete(studentId);
     }
 
     private void updateStudent(StudentDAO studentDAO) {
