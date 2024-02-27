@@ -20,11 +20,11 @@ public class MycoolappApplication {
     public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
         return runner -> {
             createStudent(studentDAO);
-            readStudent(studentDAO);
-            queryForStudents(studentDAO);
-            updateStudent(studentDAO);
-            deleteStudent(studentDAO);
-            deleteAllStudent(studentDAO);
+//            readStudent(studentDAO);
+//            queryForStudents(studentDAO);
+//            updateStudent(studentDAO);
+//            deleteStudent(studentDAO);
+//            deleteAllStudent(studentDAO);
         };
     }
 
