@@ -22,7 +22,6 @@ public class Student {
 
     // define constructors
     public Student(String firstName, String lastName, String email) {
-        System.out.println("Student cons");
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
