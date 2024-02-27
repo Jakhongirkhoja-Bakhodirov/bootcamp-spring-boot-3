@@ -24,7 +24,13 @@ public class MycoolappApplication {
             queryForStudents(studentDAO);
             updateStudent(studentDAO);
             deleteStudent(studentDAO);
+            deleteAllStudent(studentDAO);
         };
+    }
+
+    private void deleteAllStudent(StudentDAO studentDAO) {
+        System.out.println("Deleting all students");
+        studentDAO.deleteAll();
     }
 
     private void deleteStudent(StudentDAO studentDAO) {
