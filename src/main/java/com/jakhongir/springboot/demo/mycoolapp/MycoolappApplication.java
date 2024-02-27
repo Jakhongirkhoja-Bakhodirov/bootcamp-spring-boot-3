@@ -89,7 +89,7 @@ public class MycoolappApplication {
     private void createStudent(StudentDAO studentDAO) {
         //create the student object
         System.out.println("Creating new student object ...");
-        Student tempStudent = new Student("Abror", "Jo'rayev", "abror@gmail.com");
+        Student tempStudent = new Student("Abror", "Jo'rayev", "abror1@gmail.com");
         //save the student object
         System.out.println("Saving the student ...");
         studentDAO.save(tempStudent);
