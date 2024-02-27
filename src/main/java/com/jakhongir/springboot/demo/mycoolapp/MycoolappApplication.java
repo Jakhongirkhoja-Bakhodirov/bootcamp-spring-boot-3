@@ -22,7 +22,24 @@ public class MycoolappApplication {
             createStudent(studentDAO);
             readStudent(studentDAO);
             queryForStudents(studentDAO);
+            updateStudent(studentDAO);
         };
+    }
+
+    private void updateStudent(StudentDAO studentDAO) {
+        // retrieve student based on the id: primary key
+        int studentId = 1;
+        System.out.println("Getting student with id: " + studentId);
+        Student student = studentDAO.findById(studentId);
+
+        // change first name of student
+        student.setFirstName("Tom");
+
+        // update the student
+        studentDAO.update(student);
+
+        // display the updated student
+        System.out.println("Updated student: " + student);
     }
 
     private void queryForStudents(StudentDAO studentDAO) {
