@@ -17,7 +17,7 @@ public class Student {
     @Column(name = "last_name", length = 60)
     private String lastName;
 
-    @Column(name = "email", unique = true)
+    @Column(name = "email")
     private String email;
 
     // define constructors
