@@ -2,10 +2,9 @@ package com.jakhongir.springboot.demo.mycoolapp.rest;
 
 import com.jakhongir.springboot.demo.mycoolapp.dao.StudentDAO;
 import com.jakhongir.springboot.demo.mycoolapp.entity.Student;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,6 +25,20 @@ public class StudentController {
 
     @GetMapping("/students/{studentId}")
     public Student getStudent(@PathVariable int studentId) {
-        return studentDAO.findById(studentId);
+        Student student = studentDAO.findById(studentId);
+        if (student == null) {
+            throw new StudentNotFoundException("Student id not found - " + studentId);
+        }
+        return student;
+    }
+
+    @ExceptionHandler
+    public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException exception) {
+        StudentErrorResponse error = new StudentErrorResponse();
+        error.setStatus(HttpStatus.NOT_FOUND.value());
+        error.setMessage(exception.getMessage());
+        error.setTimestamp(System.currentTimeMillis());
+
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 }

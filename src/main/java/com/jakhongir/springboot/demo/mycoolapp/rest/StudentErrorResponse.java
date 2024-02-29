@@ -12,6 +12,10 @@ public class StudentErrorResponse {
         this.timestamp = timestamp;
     }
 
+    public StudentErrorResponse() {
+
+    }
+
     public void setMessage(String message) {
         this.message = message;
     }
