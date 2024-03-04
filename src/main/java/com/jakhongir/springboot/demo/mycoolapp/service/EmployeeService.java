@@ -34,6 +34,12 @@ public class EmployeeService implements EmployeeServiceInterface {
 
     @Override
     @Transactional
+    public Employee save(Employee employee) {
+        return this.employeeDAO.save(employee);
+    }
+
+    @Override
+    @Transactional
     public void delete(int id) {
         this.employeeDAO.delete(id);
     }

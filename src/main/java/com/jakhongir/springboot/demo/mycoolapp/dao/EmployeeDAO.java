@@ -9,6 +9,8 @@ public interface EmployeeDAO {
 
     Employee findById(int id);
 
+    Employee save(Employee employee);
+
     Employee updateOrCreate(Employee employee);
 
     void delete(int id);

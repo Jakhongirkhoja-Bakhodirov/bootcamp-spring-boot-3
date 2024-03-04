@@ -21,17 +21,27 @@ public class EmployeeDAOImple implements EmployeeDAO {
 
     @Override
     public List<Employee> getAll() {
-        TypedQuery<Employee> employees = this.entityManager.createQuery("FROM Employee", Employee.class);
+        System.out.println("Employee DAO Imple");
+        TypedQuery<Employee> employees = this.entityManager.createQuery("FROM Employee order by id", Employee.class);
+      //  System.out.println(employees.getResultList());
         return employees.getResultList();
     }
 
     @Override
     public Employee findById(int id) {
+        System.out.println("id " + id);
         Employee employee = this.entityManager.find(Employee.class, id);
+        System.out.println("Employee "+employee.toString());
         return employee;
     }
 
     @Override
+    public Employee save(Employee employee) {
+        return this.entityManager.merge(employee);
+    }
+
+    @Override
+    @Transactional
     public Employee updateOrCreate(Employee employee) {
         return this.entityManager.merge(employee);
     }
