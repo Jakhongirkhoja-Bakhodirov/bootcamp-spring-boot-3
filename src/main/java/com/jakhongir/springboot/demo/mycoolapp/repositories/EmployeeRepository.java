@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public class EmployeeRepository implements EmployeeDAO {
+public class EmployeeRepository {
 
     private EntityManager entityManager;
 
@@ -20,33 +20,28 @@ public class EmployeeRepository implements EmployeeDAO {
         this.entityManager = entityManager;
     }
 
-    @Override
+
     public Employee findById(int id) {
         return this.entityManager.find(Employee.class, id);
     }
 
-    @Override
+
+    @Transactional
+    public Employee updateOrCreate(Employee employee) {
+        return this.entityManager.merge(employee);
+    }
+
+
     public List<Employee> getAll() {
-        TypedQuery<Employee> employees = this.entityManager.createQuery("from Employee", Employee.class);
+        TypedQuery<Employee> employees = this.entityManager.createQuery("FROM Employee", Employee.class);
         return employees.getResultList();
     }
 
-    @Override
-    @Transactional
-    public void save(Employee employee) {
-        this.entityManager.persist(employee);
-    }
 
-    @Override
-    @Transactional
-    public void update(Employee employee) {
-        this.entityManager.merge(employee);
-    }
 
-    @Override
     @Transactional
     public void delete(int id) {
-        Employee employee = this.entityManager.find(Employee.class,id);
+        Employee employee = this.entityManager.find(Employee.class, id);
         entityManager.remove(employee);
     }
 }

@@ -32,4 +32,9 @@ public class EmployeeController {
     public Employee create(@RequestBody Employee employee) {
         return this.employeeService.save(employee);
     }
+
+    @PutMapping("/employees")
+    public Employee update(@RequestBody Employee employee) {
+        return this.employeeService.save(employee);
+    }
 }

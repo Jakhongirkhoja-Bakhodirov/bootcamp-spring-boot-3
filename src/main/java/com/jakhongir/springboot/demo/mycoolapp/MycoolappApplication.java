@@ -21,7 +21,7 @@ public class MycoolappApplication {
     public CommandLineRunner commandLineRunner(StudentDAO studentDAO, EmployeeDAO employeeDAO) {
         return runner -> {
          //   createStudent(studentDAO);
-            createEmployee(employeeDAO);
+          //  createEmployee(employeeDAO);
 //            readStudent(studentDAO);
 //            queryForStudents(studentDAO);
 //            updateStudent(studentDAO);
