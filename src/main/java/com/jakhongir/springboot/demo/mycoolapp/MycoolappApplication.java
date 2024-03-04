@@ -1,8 +1,9 @@
 package com.jakhongir.springboot.demo.mycoolapp;
 
+import com.jakhongir.springboot.demo.mycoolapp.dao.EmployeeDAO;
 import com.jakhongir.springboot.demo.mycoolapp.dao.StudentDAO;
+import com.jakhongir.springboot.demo.mycoolapp.entity.Employee;
 import com.jakhongir.springboot.demo.mycoolapp.entity.Student;
-import com.jakhongir.springboot.demo.mycoolapp.repositories.StudentRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,15 +18,21 @@ public class MycoolappApplication {
     }
 
     @Bean
-    public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
+    public CommandLineRunner commandLineRunner(StudentDAO studentDAO, EmployeeDAO employeeDAO) {
         return runner -> {
-            createStudent(studentDAO);
+         //   createStudent(studentDAO);
+            createEmployee(employeeDAO);
 //            readStudent(studentDAO);
 //            queryForStudents(studentDAO);
 //            updateStudent(studentDAO);
 //            deleteStudent(studentDAO);
 //            deleteAllStudent(studentDAO);
         };
+    }
+
+    private void createEmployee(EmployeeDAO employeeDAO) {
+        Employee employee = new Employee("Test", "Test", "testw@gmail.com", "developer");
+        employeeDAO.updateOrCreate(employee);
     }
 
     private void deleteAllStudent(StudentDAO studentDAO) {
