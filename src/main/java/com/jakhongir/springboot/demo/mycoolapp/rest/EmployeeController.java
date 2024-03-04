@@ -2,10 +2,7 @@ package com.jakhongir.springboot.demo.mycoolapp.rest;
 
 import com.jakhongir.springboot.demo.mycoolapp.entity.Employee;
 import com.jakhongir.springboot.demo.mycoolapp.service.EmployeeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,5 +26,10 @@ public class EmployeeController {
         System.out.println("employeeId " + employeeId);
         Employee employee = this.employeeService.findById(employeeId);
         return employee;
+    }
+
+    @PostMapping("/employees")
+    public Employee create(@RequestBody Employee employee) {
+        return this.employeeService.save(employee);
     }
 }
