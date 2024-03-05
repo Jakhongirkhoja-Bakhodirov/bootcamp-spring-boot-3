@@ -61,46 +61,4 @@ public class MycoolappApplication {
         // display the updated student
         System.out.println("Updated student: " + student);
     }
-
-    private void queryForStudents(StudentDAO studentDAO) {
-        // get a list of students
-        List<Student> theStudents = studentDAO.findAll();
-
-        // display list of students
-        for (Student student : theStudents) {
-            System.out.println(student);
-        }
-    }
-
-    private void readStudent(StudentDAO studentDAO) {
-        // create a student object
-        System.out.println("Creating new student object ...");
-        Student tempStudent = new Student("John", "Doe", "doe@gmail.com");
-
-        // save the student
-        System.out.println("Saving the student ...");
-        studentDAO.save(tempStudent);
-
-        // display id of the saved student
-        int theId = tempStudent.getId();
-        System.out.println("Saved student.Generated id: " + theId);
-
-        // retrieve student based on the id: primary key
-        System.out.println("Retrieving student with id: " + theId);
-        Student myStudent = studentDAO.findById(1);
-
-        // display student
-        System.out.println("Found the student: " + myStudent.toString());
-    }
-
-    private void createStudent(StudentDAO studentDAO) {
-        //create the student object
-        System.out.println("Creating new student object ...");
-        Student tempStudent = new Student("Abror", "Jo'rayev", "abror1@gmail.com");
-        //save the student object
-        System.out.println("Saving the student ...");
-        studentDAO.save(tempStudent);
-        //display id of the saved student
-        System.out.println("Saved student. Generated id: " + tempStudent.getId());
-    }
 }
