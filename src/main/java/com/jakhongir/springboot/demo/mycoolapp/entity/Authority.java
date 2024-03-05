@@ -12,9 +12,12 @@ public class Authority {
     @Column(name = "id")
     private int id;
 
-    @ManyToOne()
-    @JoinColumn(name = "user_id")
-    private User user;
+//    @ManyToOne()
+//    @JoinColumn(name = "user_id")
+//    private User user;
+
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "authority")
     private String authority;
