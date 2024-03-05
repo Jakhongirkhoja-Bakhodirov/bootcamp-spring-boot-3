@@ -19,17 +19,15 @@ public class AppSecurityConfig {
                 .password("{noop}test123").roles("EMPLOYEE").build();
 
         UserDetails manager = User.builder()
-                .username("manager")
-                .password("{noop}test123").roles("MANAGER").build();
+                .username("test")
+                .password("{noop}test1234").roles("MANAGER","EMPLOYEE").build();
 
         UserDetails admin = User.builder()
                 .username("admin")
-                .password("{noop}test123").roles("ADMIN").build();
+                .password("{noop}test123").roles("ADMIN","EMPLOYEE","MANAGER").build();
 
         return new InMemoryUserDetailsManager(employee, manager, admin);
     }
-
-    ;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
