@@ -5,9 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.provisioning.JdbcUserDetailsManager;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
@@ -31,22 +28,6 @@ public class AppSecurityConfig {
 
         return jdbcUserDetailsManager;
     }
-//    @Bean
-//    public InMemoryUserDetailsManager userDetailsManager() {
-//        UserDetails employee = User.builder()
-//                .username("employee")
-//                .password("{noop}test123").roles("EMPLOYEE").build();
-//
-//        UserDetails manager = User.builder()
-//                .username("test")
-//                .password("{noop}test1234").roles("MANAGER","EMPLOYEE").build();
-//
-//        UserDetails admin = User.builder()
-//                .username("admin")
-//                .password("{noop}test123").roles("ADMIN","EMPLOYEE","MANAGER").build();
-//
-//        return new InMemoryUserDetailsManager(employee, manager, admin);
-//    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
