@@ -3,7 +3,7 @@ package com.jakhongir.springboot.demo.mycoolapp.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "instructor_details")
+@Table(name = "instructor_detail")
 public class InstructorDetail {
     @Id
     @Column(name = "id")
