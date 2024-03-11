@@ -63,7 +63,7 @@ public class InstructorDAOImple implements InstructorDAO {
 
     @Override
     public Instructor findCoursesByInstructorIdJoinFetch(int id) {
-        TypedQuery<Instructor> query = entityManager.createQuery("select i from Instructor i " + "JOIN FETCH i.courses " + "where i.id = :data", Instructor.class);
+        TypedQuery<Instructor> query = entityManager.createQuery("select i from Instructor i " + "JOIN FETCH i.courses " + "JOIN FETCH i.instructorDetail " + "where i.id = :data", Instructor.class);
         query.setParameter("data",id);
         Instructor instructor = query.getSingleResult();
         return instructor;
