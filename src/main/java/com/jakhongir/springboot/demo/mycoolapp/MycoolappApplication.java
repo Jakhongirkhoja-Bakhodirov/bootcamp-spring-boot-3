@@ -21,8 +21,13 @@ public class MycoolappApplication {
 
         this.createInstructor(instructorDAO);
         this.findInstructor(instructorDAO);
+        this.deleteInstructor(instructorDAO);
         return runner -> {
         };
+    }
+
+    private void deleteInstructor(InstructorDAO instructorDAO) {
+        instructorDAO.deleteInstructorById(2);
     }
 
     private void findInstructor(InstructorDAO instructorDAO) {
