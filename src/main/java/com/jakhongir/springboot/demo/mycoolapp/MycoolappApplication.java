@@ -29,7 +29,7 @@ public class MycoolappApplication {
     }
 
     private void deleteInstructorDetail(InstructorDAO instructorDAO) {
-        instructorDAO.deleteInstructorDetailById(4);
+        instructorDAO.deleteInstructorDetailById(6);
     }
 
     private void findInstructorDetail(InstructorDAO instructorDAO) {
