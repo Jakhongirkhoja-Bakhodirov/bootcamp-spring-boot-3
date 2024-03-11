@@ -1,6 +1,7 @@
 package com.jakhongir.springboot.demo.mycoolapp;
 
 import com.jakhongir.springboot.demo.mycoolapp.dao.InstructorDAO;
+import com.jakhongir.springboot.demo.mycoolapp.entity.Course;
 import com.jakhongir.springboot.demo.mycoolapp.entity.Instructor;
 import com.jakhongir.springboot.demo.mycoolapp.entity.InstructorDetail;
 import org.springframework.boot.CommandLineRunner;
@@ -8,6 +9,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
@@ -23,9 +25,31 @@ public class MycoolappApplication {
 //        this.findInstructor(instructorDAO);
 //        this.deleteInstructor(instructorDAO);
 //        this.findInstructorDetail(instructorDAO);
-        this.deleteInstructorDetail(instructorDAO);
+//        this.deleteInstructorDetail(instructorDAO);
+        this.createInstructorWithCourses(instructorDAO);
         return runner -> {
         };
+    }
+
+    private void createInstructorWithCourses(InstructorDAO instructorDAO) {
+        // create Instructor
+        Instructor instructor = new Instructor("Test", "test", "test@gmail.com");
+
+        // create Instructor detail
+        InstructorDetail instructorDetail = new InstructorDetail("test channel", "test hobby");
+
+        // associate the objects
+        instructor.setInstructorDetail(instructorDetail);
+
+        Course firstCourse = new Course("test course");
+        Course secondCourse = new Course("test next course");
+
+        instructor.addCourse(firstCourse);
+        instructor.addCourse(secondCourse);
+
+        System.out.println("Saving instructor: " + instructor);
+
+        instructorDAO.save(instructor);
     }
 
     private void deleteInstructorDetail(InstructorDAO instructorDAO) {

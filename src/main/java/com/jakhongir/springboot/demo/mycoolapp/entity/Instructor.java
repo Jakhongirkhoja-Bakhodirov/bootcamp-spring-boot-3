@@ -61,7 +61,7 @@ public class Instructor {
     @OneToMany(mappedBy = "instructor", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private List<Course> courses;
 
-    void addCourse(Course course) {
+    public void addCourse(Course course) {
         if (courses == null) {
             courses = new ArrayList<>();
         }
