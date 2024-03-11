@@ -14,6 +14,21 @@ public class Course {
     @Column(name = "title")
     private String title;
 
+    public Course(String title) {
+        this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                '}';
+    }
+
+    public Course() {
+    }
+
     public int getId() {
         return id;
     }
