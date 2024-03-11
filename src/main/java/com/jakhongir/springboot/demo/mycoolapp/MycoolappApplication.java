@@ -44,8 +44,14 @@ public class MycoolappApplication {
         Course firstCourse = new Course("test course");
         Course secondCourse = new Course("test next course");
 
-        instructor.addCourse(firstCourse);
-        instructor.addCourse(secondCourse);
+        List<Course> courses = new ArrayList<>();
+        courses.add(firstCourse);
+        courses.add(secondCourse);
+
+        instructor.setCourses(courses);
+
+//        instructor.addCourse(firstCourse);
+//        instructor.addCourse(secondCourse);
 
         System.out.println("Saving instructor: " + instructor);
 
