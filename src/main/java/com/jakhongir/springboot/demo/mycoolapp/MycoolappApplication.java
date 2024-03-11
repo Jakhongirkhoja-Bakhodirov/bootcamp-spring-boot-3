@@ -26,9 +26,19 @@ public class MycoolappApplication {
 //        this.deleteInstructor(instructorDAO);
 //        this.findInstructorDetail(instructorDAO);
 //        this.deleteInstructorDetail(instructorDAO);
-        this.createInstructorWithCourses(instructorDAO);
+//        this.createInstructorWithCourses(instructorDAO);
+        this.findInstructorWithCourses(instructorDAO);
         return runner -> {
         };
+    }
+
+    private void findInstructorWithCourses(InstructorDAO instructorDAO) {
+        int id = 18;
+
+        Instructor instructor = instructorDAO.findInstructorById(id);
+
+        System.out.println("Instructor " + instructor.toString());
+        System.out.println("The associated courses: " + instructor.getCourses());
     }
 
     private void createInstructorWithCourses(InstructorDAO instructorDAO) {
