@@ -4,4 +4,6 @@ import com.jakhongir.springboot.demo.mycoolapp.entity.Instructor;
 
 public interface InstructorDAO {
     void save(Instructor instructor);
+
+    Instructor findInstructorById(int id);
 }

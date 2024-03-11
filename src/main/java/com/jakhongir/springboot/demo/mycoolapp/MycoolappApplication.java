@@ -20,9 +20,17 @@ public class MycoolappApplication {
     public CommandLineRunner commandLineRunner(InstructorDAO instructorDAO) {
 
         this.createInstructor(instructorDAO);
-
+        this.findInstructor(instructorDAO);
         return runner -> {
         };
+    }
+
+    private void findInstructor(InstructorDAO instructorDAO) {
+        int id = 2;
+        System.out.println("Finding instructor id: " + id);
+        Instructor instructor = instructorDAO.findInstructorById(id);
+        System.out.println("Instructor: " + instructor.toString());
+        System.out.println("Associated instructor detail: " + instructor.getInstructorDetail());
     }
 
     private void createInstructor(InstructorDAO instructorDAO) {
