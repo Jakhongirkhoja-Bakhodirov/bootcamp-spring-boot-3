@@ -9,6 +9,7 @@ import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.lang.reflect.Type;
 import java.util.List;
 
 @Repository
@@ -58,6 +59,14 @@ public class InstructorDAOImple implements InstructorDAO {
         query.setParameter("data", id);
         List<Course> courses = query.getResultList();
         return courses;
+    }
+
+    @Override
+    public Instructor findCoursesByInstructorIdJoinFetch(int id) {
+        TypedQuery<Instructor> query = entityManager.createQuery("select i from Instructor i " + "JOIN FETCH i.courses " + "where i.id = :data", Instructor.class);
+        query.setParameter("data",id);
+        Instructor instructor = query.getSingleResult();
+        return instructor;
     }
 
 
