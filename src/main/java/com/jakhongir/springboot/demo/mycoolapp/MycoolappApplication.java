@@ -22,14 +22,19 @@ public class MycoolappApplication {
 //        this.createInstructor(instructorDAO);
 //        this.findInstructor(instructorDAO);
 //        this.deleteInstructor(instructorDAO);
-        this.findInstructorDetail(instructorDAO);
+//        this.findInstructorDetail(instructorDAO);
+        this.deleteInstructorDetail(instructorDAO);
         return runner -> {
         };
     }
 
+    private void deleteInstructorDetail(InstructorDAO instructorDAO) {
+        instructorDAO.deleteInstructorDetailById(4);
+    }
+
     private void findInstructorDetail(InstructorDAO instructorDAO) {
         InstructorDetail instructorDetail = instructorDAO.findInstructorDetailById(3);
-        System.out.println("Instructor detail: " + instructorDetail.toString() );
+        System.out.println("Instructor detail: " + instructorDetail.toString());
         System.out.println("Instructor itself: " + instructorDetail.getInstructor());
     }
 
