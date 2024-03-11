@@ -19,11 +19,18 @@ public class MycoolappApplication {
     @Bean
     public CommandLineRunner commandLineRunner(InstructorDAO instructorDAO) {
 
-        this.createInstructor(instructorDAO);
-        this.findInstructor(instructorDAO);
-        this.deleteInstructor(instructorDAO);
+//        this.createInstructor(instructorDAO);
+//        this.findInstructor(instructorDAO);
+//        this.deleteInstructor(instructorDAO);
+        this.findInstructorDetail(instructorDAO);
         return runner -> {
         };
+    }
+
+    private void findInstructorDetail(InstructorDAO instructorDAO) {
+        InstructorDetail instructorDetail = instructorDAO.findInstructorDetailById(3);
+        System.out.println("Instructor detail: " + instructorDetail.toString() );
+        System.out.println("Instructor itself: " + instructorDetail.getInstructor());
     }
 
     private void deleteInstructor(InstructorDAO instructorDAO) {
