@@ -29,6 +29,12 @@ public class InstructorDAOImple implements InstructorDAO {
     }
 
     @Override
+    @Transactional
+    public void save(Course course) {
+        entityManager.persist(course);
+    }
+
+    @Override
     public Instructor findInstructorById(int id) {
         return entityManager.find(Instructor.class, id);
     }

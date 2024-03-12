@@ -28,4 +28,12 @@ public class Review {
     public String getComment() {
         return this.comment;
     }
+
+    public Review() {
+
+    }
+
+    public Review(String comment) {
+        this.comment = comment;
+    }
 }

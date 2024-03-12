@@ -9,6 +9,8 @@ import java.util.List;
 public interface InstructorDAO {
     void save(Instructor instructor);
 
+    void save(Course course);
+
     Instructor findInstructorById(int id);
 
     void deleteInstructorById(int id);

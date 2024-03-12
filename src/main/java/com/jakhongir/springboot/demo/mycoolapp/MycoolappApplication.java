@@ -4,6 +4,7 @@ import com.jakhongir.springboot.demo.mycoolapp.dao.InstructorDAO;
 import com.jakhongir.springboot.demo.mycoolapp.entity.Course;
 import com.jakhongir.springboot.demo.mycoolapp.entity.Instructor;
 import com.jakhongir.springboot.demo.mycoolapp.entity.InstructorDetail;
+import com.jakhongir.springboot.demo.mycoolapp.entity.Review;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -33,9 +34,20 @@ public class MycoolappApplication {
 //        this.updateInstructor(instructorDAO);
 //        this.updateCourse(instructorDAO);
 //        this.deleteInstructor(instructorDAO);
-        this.deleteCourseById(instructorDAO);
+//        this.deleteCourseById(instructorDAO);
+        this.createCourse(instructorDAO);
         return runner -> {
         };
+    }
+
+    private void createCourse(InstructorDAO instructorDAO) {
+        Course course = new Course("test course");
+//        Instructor instructor = instructorDAO.findInstructorById(1);
+//        course.setInstructor(instructor);
+        Review review = new Review("test comment");
+        course.addReview(review);
+        System.out.println("Get course reviews " + course.getReviews());
+        instructorDAO.save(course);
     }
 
     private void deleteCourseById(InstructorDAO instructorDAO) {
