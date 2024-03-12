@@ -31,8 +31,16 @@ public class MycoolappApplication {
 //        this.findCoursesForInstructor(instructorDAO);
 //        this.findCoursesForInstructorJoinFetch(instructorDAO);
         this.updateInstructor(instructorDAO);
+//        this.updateCourse(instructorDAO);
         return runner -> {
         };
+    }
+
+    private void updateCourse(InstructorDAO instructorDAO) {
+        Course course = instructorDAO.findCourseById(1);
+        course.setTitle("Updated title");
+        instructorDAO.update(course);
+        System.out.println("Updated Course " + course.toString());
     }
 
     private void updateInstructor(InstructorDAO instructorDAO) {
