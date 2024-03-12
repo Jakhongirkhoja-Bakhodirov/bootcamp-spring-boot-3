@@ -37,6 +37,13 @@ public class InstructorDAOImple implements InstructorDAO {
     @Transactional
     public void deleteInstructorById(int id) {
         Instructor instructor = this.entityManager.find(Instructor.class, id);
+
+        List<Course> courses = instructor.getCourses();
+
+        for (Course course : courses) {
+            course.setInstructor(null);
+        }
+
         entityManager.remove(instructor);
     }
 
@@ -85,6 +92,4 @@ public class InstructorDAOImple implements InstructorDAO {
     public Course findCourseById(int id) {
         return entityManager.find(Course.class, id);
     }
-
-
 }

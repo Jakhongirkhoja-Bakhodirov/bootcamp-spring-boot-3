@@ -30,8 +30,9 @@ public class MycoolappApplication {
 //        this.findInstructorWithCourses(instructorDAO);
 //        this.findCoursesForInstructor(instructorDAO);
 //        this.findCoursesForInstructorJoinFetch(instructorDAO);
-        this.updateInstructor(instructorDAO);
+//        this.updateInstructor(instructorDAO);
 //        this.updateCourse(instructorDAO);
+        this.deleteInstructor(instructorDAO);
         return runner -> {
         };
     }
@@ -111,7 +112,7 @@ public class MycoolappApplication {
     }
 
     private void deleteInstructor(InstructorDAO instructorDAO) {
-        instructorDAO.deleteInstructorById(2);
+        instructorDAO.deleteInstructorById(18);
     }
 
     private void findInstructor(InstructorDAO instructorDAO) {
