@@ -92,4 +92,11 @@ public class InstructorDAOImple implements InstructorDAO {
     public Course findCourseById(int id) {
         return entityManager.find(Course.class, id);
     }
+
+    @Override
+    @Transactional
+    public void deleteCourseById(int id) {
+        Course course = entityManager.find(Course.class, id);
+        entityManager.remove(course);
+    }
 }
