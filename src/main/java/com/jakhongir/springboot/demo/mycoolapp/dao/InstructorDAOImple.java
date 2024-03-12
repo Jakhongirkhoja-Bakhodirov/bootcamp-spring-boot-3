@@ -69,5 +69,11 @@ public class InstructorDAOImple implements InstructorDAO {
         return instructor;
     }
 
+    @Override
+    @Transactional
+    public void update(Instructor instructor) {
+        entityManager.merge(instructor);
+    }
+
 
 }

@@ -27,11 +27,19 @@ public class MycoolappApplication {
 //        this.findInstructorDetail(instructorDAO);
 //        this.deleteInstructorDetail(instructorDAO);
 //        this.createInstructorWithCourses(instructorDAO);
-        //      this.findInstructorWithCourses(instructorDAO);
-        //   this.findCoursesForInstructor(instructorDAO);
-        this.findCoursesForInstructorJoinFetch(instructorDAO);
+//        this.findInstructorWithCourses(instructorDAO);
+//        this.findCoursesForInstructor(instructorDAO);
+//        this.findCoursesForInstructorJoinFetch(instructorDAO);
+        this.updateInstructor(instructorDAO);
         return runner -> {
         };
+    }
+
+    private void updateInstructor(InstructorDAO instructorDAO) {
+        Instructor instructor = instructorDAO.findInstructorById(1);
+        instructor.setEmail("update@gmail.com");
+        instructorDAO.update(instructor);
+        System.out.println("Updated Instructor " + instructor.toString());
     }
 
     private void findCoursesForInstructorJoinFetch(InstructorDAO instructorDAO) {
