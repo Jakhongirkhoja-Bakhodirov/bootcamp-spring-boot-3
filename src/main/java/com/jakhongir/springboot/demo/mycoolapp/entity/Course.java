@@ -79,6 +79,14 @@ public class Course {
         return this.reviews;
     }
 
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
     @ManyToMany
     @JoinTable(
             name = "course_student",
