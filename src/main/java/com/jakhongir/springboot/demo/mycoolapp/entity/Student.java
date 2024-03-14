@@ -2,6 +2,8 @@ package com.jakhongir.springboot.demo.mycoolapp.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "students")
 public class Student {
@@ -73,4 +75,12 @@ public class Student {
 
     public Student() {
     }
+
+    @ManyToMany
+    @JoinTable(
+            name = "course_student",
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
+    )
+    private List<Course> courses;
 }
