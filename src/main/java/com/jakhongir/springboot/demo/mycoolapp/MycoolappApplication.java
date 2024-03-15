@@ -21,7 +21,6 @@ public class MycoolappApplication {
 
     @Bean
     public CommandLineRunner commandLineRunner(InstructorDAO instructorDAO) {
-
 //        this.createInstructor(instructorDAO);
 //        this.findInstructor(instructorDAO);
 //        this.deleteInstructor(instructorDAO);
