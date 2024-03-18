@@ -1,10 +1,7 @@
 package com.jakhongir.springboot.demo.mycoolapp;
 
 import com.jakhongir.springboot.demo.mycoolapp.dao.InstructorDAO;
-import com.jakhongir.springboot.demo.mycoolapp.entity.Course;
-import com.jakhongir.springboot.demo.mycoolapp.entity.Instructor;
-import com.jakhongir.springboot.demo.mycoolapp.entity.InstructorDetail;
-import com.jakhongir.springboot.demo.mycoolapp.entity.Review;
+import com.jakhongir.springboot.demo.mycoolapp.entity.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -35,9 +32,30 @@ public class MycoolappApplication {
 //        this.deleteInstructor(instructorDAO);
 //        this.deleteCourseById(instructorDAO);
 //        this.createCourse(instructorDAO);
-        this.findCourseAndReviewsByCourseId(instructorDAO);
+      //  this.findCourseAndReviewsByCourseId(instructorDAO);
+        this.createCourseAndStudents(instructorDAO);
         return runner -> {
         };
+    }
+
+    private void createCourseAndStudents(InstructorDAO instructorDAO) {
+        // create course
+        Course course = new Course("Math");
+
+        // create and save students
+        Student john = new Student("John","Edison","john@gmail.com");
+        Student mike = new Student("Mike","Edison","mike@gmail.com");
+
+        instructorDAO.save(john);
+        instructorDAO.save(mike);
+
+
+        // add students to the course
+        course.addStudent(john);
+        course.addStudent(mike);
+
+        // save the course and associated students
+        instructorDAO.save(course);
     }
 
     private void findCourseAndReviewsByCourseId(InstructorDAO instructorDAO) {
