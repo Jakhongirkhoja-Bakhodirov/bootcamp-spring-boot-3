@@ -3,6 +3,7 @@ package com.jakhongir.springboot.demo.mycoolapp.dao;
 import com.jakhongir.springboot.demo.mycoolapp.entity.Course;
 import com.jakhongir.springboot.demo.mycoolapp.entity.Instructor;
 import com.jakhongir.springboot.demo.mycoolapp.entity.InstructorDetail;
+import com.jakhongir.springboot.demo.mycoolapp.entity.Student;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
@@ -32,6 +33,12 @@ public class InstructorDAOImple implements InstructorDAO {
     @Transactional
     public void save(Course course) {
         entityManager.persist(course);
+    }
+
+    @Override
+    @Transactional
+    public void save(Student student) {
+        entityManager.persist(student);
     }
 
     @Override

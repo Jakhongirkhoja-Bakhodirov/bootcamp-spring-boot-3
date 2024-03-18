@@ -3,6 +3,7 @@ package com.jakhongir.springboot.demo.mycoolapp.dao;
 import com.jakhongir.springboot.demo.mycoolapp.entity.Course;
 import com.jakhongir.springboot.demo.mycoolapp.entity.Instructor;
 import com.jakhongir.springboot.demo.mycoolapp.entity.InstructorDetail;
+import com.jakhongir.springboot.demo.mycoolapp.entity.Student;
 
 import java.util.List;
 
@@ -10,6 +11,8 @@ public interface InstructorDAO {
     void save(Instructor instructor);
 
     void save(Course course);
+
+    void save(Student student);
 
     Instructor findInstructorById(int id);
 
