@@ -31,11 +31,18 @@ public class MycoolappApplication {
 //        this.updateCourse(instructorDAO);
 //        this.deleteInstructor(instructorDAO);
 //        this.deleteCourseById(instructorDAO);
-//        this.createCourse(instructorDAO);
-      //  this.findCourseAndReviewsByCourseId(instructorDAO);
-        this.createCourseAndStudents(instructorDAO);
+//        this.createCourse(instructorDAO)
+//        this.findCourseAndReviewsByCourseId(instructorDAO);
+//        this.createCourseAndStudents(instructorDAO);
+        this.findCourseAndStudents(instructorDAO);
         return runner -> {
         };
+    }
+
+    private void findCourseAndStudents(InstructorDAO instructorDAO) {
+        Course course = instructorDAO.findCourseAndStudentsByCourseId(15);
+        System.out.println("Course " + course);
+        System.out.println("Students " + course.getStudents());
     }
 
     private void createCourseAndStudents(InstructorDAO instructorDAO) {
