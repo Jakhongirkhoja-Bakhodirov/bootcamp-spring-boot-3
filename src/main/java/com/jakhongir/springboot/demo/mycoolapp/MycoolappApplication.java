@@ -36,9 +36,14 @@ public class MycoolappApplication {
 //        this.createCourseAndStudents(instructorDAO);
 //        this.findCourseAndStudents(instructorDAO);
 //        this.findCourseAndReviewsByStudentId(instructorDAO);
-        this.addMoreCoursesForStudent(instructorDAO);
+//        this.addMoreCoursesForStudent(instructorDAO);
+        this.deleteStudentById(instructorDAO);
         return runner -> {
         };
+    }
+
+    private void deleteStudentById(InstructorDAO instructorDAO) {
+        instructorDAO.deleteStudentById(2);
     }
 
     private void addMoreCoursesForStudent(InstructorDAO instructorDAO) {
@@ -110,7 +115,7 @@ public class MycoolappApplication {
     }
 
     private void deleteCourseById(InstructorDAO instructorDAO) {
-        instructorDAO.deleteCourseById(1);
+        instructorDAO.deleteCourseById(13);
     }
 
     private void updateCourse(InstructorDAO instructorDAO) {

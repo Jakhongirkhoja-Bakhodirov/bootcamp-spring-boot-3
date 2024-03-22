@@ -142,4 +142,11 @@ public class InstructorDAOImple implements InstructorDAO {
     public void update(Student student) {
         entityManager.merge(student);
     }
+
+    @Override
+    @Transactional
+    public void deleteStudentById(int id) {
+        Student student = findCourseAndStudentsByStudentId(id);
+        entityManager.remove(student);
+    }
 }
