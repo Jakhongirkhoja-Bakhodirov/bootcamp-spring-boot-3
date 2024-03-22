@@ -34,9 +34,16 @@ public class MycoolappApplication {
 //        this.createCourse(instructorDAO)
 //        this.findCourseAndReviewsByCourseId(instructorDAO);
 //        this.createCourseAndStudents(instructorDAO);
-        this.findCourseAndStudents(instructorDAO);
+//        this.findCourseAndStudents(instructorDAO);
+        this.findCourseAndReviewsByStudentId(instructorDAO);
         return runner -> {
         };
+    }
+
+    private void findCourseAndReviewsByStudentId(InstructorDAO instructorDAO) {
+        Student student = instructorDAO.findCourseAndStudentsByStudentId(2);
+        System.out.println("Student " + student);
+        System.out.println("Courses " + student.getCourses());
     }
 
     private void findCourseAndStudents(InstructorDAO instructorDAO) {
@@ -50,8 +57,8 @@ public class MycoolappApplication {
         Course course = new Course("Math");
 
         // create and save students
-        Student john = new Student("John","Edison","john@gmail.com");
-        Student mike = new Student("Mike","Edison","mike@gmail.com");
+        Student john = new Student("John", "Edison", "john@gmail.com");
+        Student mike = new Student("Mike", "Edison", "mike@gmail.com");
 
         instructorDAO.save(john);
         instructorDAO.save(mike);
@@ -68,7 +75,7 @@ public class MycoolappApplication {
     private void findCourseAndReviewsByCourseId(InstructorDAO instructorDAO) {
         Course course = instructorDAO.findCourseAndReviewsByCourseId(1);
         System.out.println("Course " + course);
-        System.out.println("Reviews of the Course "+ course.getReviews());
+        System.out.println("Reviews of the Course " + course.getReviews());
 
     }
 

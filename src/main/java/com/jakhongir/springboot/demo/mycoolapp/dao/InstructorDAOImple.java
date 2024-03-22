@@ -128,4 +128,12 @@ public class InstructorDAOImple implements InstructorDAO {
         Course course = query.getSingleResult();
         return course;
     }
+
+    @Override
+    public Student findCourseAndStudentsByStudentId(int id) {
+        TypedQuery<Student> query = entityManager.createQuery("select s from Student s " + "JOIN FETCH s.courses " + "where s.id = :data", Student.class);
+        query.setParameter("data", id);
+        Student student = query.getSingleResult();
+        return student;
+    }
 }
