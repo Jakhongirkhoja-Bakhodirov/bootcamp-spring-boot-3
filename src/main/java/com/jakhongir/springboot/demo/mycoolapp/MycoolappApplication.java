@@ -35,9 +35,29 @@ public class MycoolappApplication {
 //        this.findCourseAndReviewsByCourseId(instructorDAO);
 //        this.createCourseAndStudents(instructorDAO);
 //        this.findCourseAndStudents(instructorDAO);
-        this.findCourseAndReviewsByStudentId(instructorDAO);
+//        this.findCourseAndReviewsByStudentId(instructorDAO);
+        this.addMoreCoursesForStudent(instructorDAO);
         return runner -> {
         };
+    }
+
+    private void addMoreCoursesForStudent(InstructorDAO instructorDAO) {
+        Student student = instructorDAO.findCourseAndStudentsByStudentId(2);
+
+        // create more courses
+        Course course = new Course("Software Engineering");
+        Course course1 = new Course("Machine learning");
+
+        instructorDAO.save(course);
+        instructorDAO.save(course1);
+
+        student.addCourse(course);
+        student.addCourse(course1);
+
+        System.out.println("Updating student " + student);
+        System.out.println("Associated courses " + student.getCourses());
+
+        instructorDAO.update(student);
     }
 
     private void findCourseAndReviewsByStudentId(InstructorDAO instructorDAO) {

@@ -136,4 +136,10 @@ public class InstructorDAOImple implements InstructorDAO {
         Student student = query.getSingleResult();
         return student;
     }
+
+    @Override
+    @Transactional
+    public void update(Student student) {
+        entityManager.merge(student);
+    }
 }
