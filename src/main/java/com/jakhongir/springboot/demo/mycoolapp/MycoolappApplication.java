@@ -1,6 +1,7 @@
 package com.jakhongir.springboot.demo.mycoolapp;
 
 import com.jakhongir.springboot.demo.mycoolapp.dao.InstructorDAO;
+import com.jakhongir.springboot.demo.mycoolapp.entity.*;
 import com.jakhongir.springboot.demo.mycoolapp.entity.Course;
 import com.jakhongir.springboot.demo.mycoolapp.entity.Instructor;
 import com.jakhongir.springboot.demo.mycoolapp.entity.InstructorDetail;
@@ -21,7 +22,6 @@ public class MycoolappApplication {
 
     @Bean
     public CommandLineRunner commandLineRunner(InstructorDAO instructorDAO) {
-
 //        this.createInstructor(instructorDAO);
 //        this.findInstructor(instructorDAO);
 //        this.deleteInstructor(instructorDAO);
@@ -35,11 +35,79 @@ public class MycoolappApplication {
 //        this.updateCourse(instructorDAO);
 //        this.deleteInstructor(instructorDAO);
 //        this.deleteCourseById(instructorDAO);
-        this.createCourse(instructorDAO);
+//        this.createCourse(instructorDAO)
+//        this.findCourseAndReviewsByCourseId(instructorDAO);
+//        this.createCourseAndStudents(instructorDAO);
+//        this.findCourseAndStudents(instructorDAO);
+//        this.findCourseAndReviewsByStudentId(instructorDAO);
+//        this.addMoreCoursesForStudent(instructorDAO);
+        this.deleteStudentById(instructorDAO);
         return runner -> {
         };
     }
 
+    private void deleteStudentById(InstructorDAO instructorDAO) {
+        instructorDAO.deleteStudentById(2);
+    }
+
+    private void addMoreCoursesForStudent(InstructorDAO instructorDAO) {
+        Student student = instructorDAO.findCourseAndStudentsByStudentId(2);
+
+        // create more courses
+        Course course = new Course("Software Engineering");
+        Course course1 = new Course("Machine learning");
+
+        instructorDAO.save(course);
+        instructorDAO.save(course1);
+
+        student.addCourse(course);
+        student.addCourse(course1);
+
+        System.out.println("Updating student " + student);
+        System.out.println("Associated courses " + student.getCourses());
+
+        instructorDAO.update(student);
+    }
+
+    private void findCourseAndReviewsByStudentId(InstructorDAO instructorDAO) {
+        Student student = instructorDAO.findCourseAndStudentsByStudentId(2);
+        System.out.println("Student " + student);
+        System.out.println("Courses " + student.getCourses());
+    }
+
+    private void findCourseAndStudents(InstructorDAO instructorDAO) {
+        Course course = instructorDAO.findCourseAndStudentsByCourseId(15);
+        System.out.println("Course " + course);
+        System.out.println("Students " + course.getStudents());
+    }
+
+    private void createCourseAndStudents(InstructorDAO instructorDAO) {
+        // create course
+        Course course = new Course("Math");
+
+        // create and save students
+        Student john = new Student("John", "Edison", "john@gmail.com");
+        Student mike = new Student("Mike", "Edison", "mike@gmail.com");
+
+        instructorDAO.save(john);
+        instructorDAO.save(mike);
+
+
+        // add students to the course
+        course.addStudent(john);
+        course.addStudent(mike);
+
+        // save the course and associated students
+        instructorDAO.save(course);
+    }
+
+    private void findCourseAndReviewsByCourseId(InstructorDAO instructorDAO) {
+        Course course = instructorDAO.findCourseAndReviewsByCourseId(1);
+        System.out.println("Course " + course);
+        System.out.println("Reviews of the Course " + course.getReviews());
+
+    }
+  
     private void createCourse(InstructorDAO instructorDAO) {
         Course course = new Course("test course");
 //        Instructor instructor = instructorDAO.findInstructorById(1);
@@ -51,7 +119,7 @@ public class MycoolappApplication {
     }
 
     private void deleteCourseById(InstructorDAO instructorDAO) {
-        instructorDAO.deleteCourseById(1);
+        instructorDAO.deleteCourseById(13);
     }
 
     private void updateCourse(InstructorDAO instructorDAO) {

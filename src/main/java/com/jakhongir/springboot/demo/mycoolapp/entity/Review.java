@@ -36,4 +36,12 @@ public class Review {
     public Review(String comment) {
         this.comment = comment;
     }
+
+    @Override
+    public String toString() {
+        return "Review{" +
+                "id=" + id +
+                ", comment='" + comment + '\'' +
+                '}';
+    }
 }
