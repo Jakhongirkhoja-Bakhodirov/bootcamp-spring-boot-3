@@ -2,6 +2,10 @@ package com.jakhongir.springboot.demo.mycoolapp;
 
 import com.jakhongir.springboot.demo.mycoolapp.dao.InstructorDAO;
 import com.jakhongir.springboot.demo.mycoolapp.entity.*;
+import com.jakhongir.springboot.demo.mycoolapp.entity.Course;
+import com.jakhongir.springboot.demo.mycoolapp.entity.Instructor;
+import com.jakhongir.springboot.demo.mycoolapp.entity.InstructorDetail;
+import com.jakhongir.springboot.demo.mycoolapp.entity.Review;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -103,7 +107,7 @@ public class MycoolappApplication {
         System.out.println("Reviews of the Course " + course.getReviews());
 
     }
-
+  
     private void createCourse(InstructorDAO instructorDAO) {
         Course course = new Course("test course");
 //        Instructor instructor = instructorDAO.findInstructorById(1);

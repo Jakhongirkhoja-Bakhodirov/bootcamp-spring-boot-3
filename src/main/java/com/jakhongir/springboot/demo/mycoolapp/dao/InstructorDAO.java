@@ -7,11 +7,13 @@ import com.jakhongir.springboot.demo.mycoolapp.entity.Student;
 
 import java.util.List;
 
+import java.util.List;
+
 public interface InstructorDAO {
     void save(Instructor instructor);
 
     void save(Course course);
-
+  
     void save(Student student);
 
     Instructor findInstructorById(int id);
@@ -43,4 +45,6 @@ public interface InstructorDAO {
     Course findCourseAndStudentsByCourseId(int id);
 
     Student findCourseAndStudentsByStudentId(int id);
+  
+    Course findCourseById(int id);
 }
