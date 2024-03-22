@@ -148,29 +148,4 @@ public class InstructorDAOImple implements InstructorDAO {
         Student student = findCourseAndStudentsByStudentId(id);
         entityManager.remove(student);
     }
-
-    @Override
-    public Instructor findCoursesByInstructorIdJoinFetch(int id) {
-        TypedQuery<Instructor> query = entityManager.createQuery("select i from Instructor i " + "JOIN FETCH i.courses " + "JOIN FETCH i.instructorDetail " + "where i.id = :data", Instructor.class);
-        query.setParameter("data", id);
-        Instructor instructor = query.getSingleResult();
-        return instructor;
-    }
-
-    @Override
-    @Transactional
-    public void update(Instructor instructor) {
-        entityManager.merge(instructor);
-    }
-
-    @Override
-    @Transactional
-    public void update(Course course) {
-        entityManager.merge(course);
-    }
-
-    @Override
-    public Course findCourseById(int id) {
-        return entityManager.find(Course.class, id);
-    }
 }

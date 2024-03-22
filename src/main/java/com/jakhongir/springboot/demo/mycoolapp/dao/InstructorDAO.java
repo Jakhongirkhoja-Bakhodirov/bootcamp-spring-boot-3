@@ -45,6 +45,4 @@ public interface InstructorDAO {
     Course findCourseAndStudentsByCourseId(int id);
 
     Student findCourseAndStudentsByStudentId(int id);
-  
-    Course findCourseById(int id);
 }
