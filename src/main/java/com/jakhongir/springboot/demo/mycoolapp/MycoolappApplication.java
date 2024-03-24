@@ -1,5 +1,6 @@
 package com.jakhongir.springboot.demo.mycoolapp;
 
+import com.jakhongir.springboot.demo.mycoolapp.dao.AccountDAO;
 import com.jakhongir.springboot.demo.mycoolapp.dao.InstructorDAO;
 import com.jakhongir.springboot.demo.mycoolapp.entity.*;
 import com.jakhongir.springboot.demo.mycoolapp.entity.Course;
@@ -21,7 +22,7 @@ public class MycoolappApplication {
     }
 
     @Bean
-    public CommandLineRunner commandLineRunner(InstructorDAO instructorDAO) {
+    public CommandLineRunner commandLineRunner(InstructorDAO instructorDAO, AccountDAO accountDAO) {
 //        this.createInstructor(instructorDAO);
 //        this.findInstructor(instructorDAO);
 //        this.deleteInstructor(instructorDAO);
@@ -41,9 +42,14 @@ public class MycoolappApplication {
 //        this.findCourseAndStudents(instructorDAO);
 //        this.findCourseAndReviewsByStudentId(instructorDAO);
 //        this.addMoreCoursesForStudent(instructorDAO);
-        this.deleteStudentById(instructorDAO);
+//        this.deleteStudentById(instructorDAO);
         return runner -> {
+            addAccount(accountDAO);
         };
+    }
+
+    private void addAccount(AccountDAO accountDAO) {
+        accountDAO.addAccount();
     }
 
     private void deleteStudentById(InstructorDAO instructorDAO) {
