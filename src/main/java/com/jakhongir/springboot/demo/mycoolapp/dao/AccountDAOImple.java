@@ -1,11 +1,12 @@
 package com.jakhongir.springboot.demo.mycoolapp.dao;
 
+import com.jakhongir.springboot.demo.mycoolapp.entity.Employee;
 import org.springframework.stereotype.Component;
 
 @Component
 public class AccountDAOImple implements AccountDAO{
     @Override
-    public void addAccount() {
+    public void addAccount(Employee employee) {
         System.out.println("Do adding to account");
     }
 }

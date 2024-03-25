@@ -51,7 +51,8 @@ public class MycoolappApplication {
     }
 
     private void addAccount(AccountDAO accountDAO) {
-        accountDAO.addAccount();
+        Employee employee = new Employee("John","Sam","john@gmail.com","engineer");
+        accountDAO.addAccount(employee);
     }
 
     private void deleteStudentById(InstructorDAO instructorDAO) {
@@ -115,7 +116,7 @@ public class MycoolappApplication {
         System.out.println("Reviews of the Course " + course.getReviews());
 
     }
-  
+
     private void createCourse(InstructorDAO instructorDAO) {
         Course course = new Course("test course");
 //        Instructor instructor = instructorDAO.findInstructorById(1);
