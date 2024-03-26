@@ -52,7 +52,7 @@ public class MycoolappApplication {
 
     private void addAccount(AccountDAO accountDAO) {
         Employee employee = new Employee("John","Sam","john@gmail.com","engineer");
-        accountDAO.addAccount(employee);
+        accountDAO.addAccount(employee,true);
     }
 
     private void deleteStudentById(InstructorDAO instructorDAO) {

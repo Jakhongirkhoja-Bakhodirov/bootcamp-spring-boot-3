@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AccountDAOImple implements AccountDAO{
     @Override
-    public void addAccount(Employee employee) {
+    public void addAccount(Employee employee,boolean isActive) {
         System.out.println("Do adding to account");
     }
 }
