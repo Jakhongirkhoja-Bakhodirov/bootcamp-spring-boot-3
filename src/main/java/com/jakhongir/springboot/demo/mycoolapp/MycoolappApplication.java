@@ -40,7 +40,7 @@ public class MycoolappApplication {
 //        this.createCourse(instructorDAO)
 //        this.findCourseAndReviewsByCourseId(instructorDAO);
 //        this.createCourseAndStudents(instructorDAO);
-//        this.findCourseAndStudents(instructorDAO);
+        this.findCourseAndStudents(instructorDAO);
 //        this.findCourseAndReviewsByStudentId(instructorDAO);
 //        this.addMoreCoursesForStudent(instructorDAO);
 //        this.deleteStudentById(instructorDAO);
