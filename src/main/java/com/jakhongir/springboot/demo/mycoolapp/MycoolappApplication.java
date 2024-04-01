@@ -40,18 +40,21 @@ public class MycoolappApplication {
 //        this.createCourse(instructorDAO)
 //        this.findCourseAndReviewsByCourseId(instructorDAO);
 //        this.createCourseAndStudents(instructorDAO);
-        this.findCourseAndStudents(instructorDAO);
+//        this.findCourseAndStudents(instructorDAO);
 //        this.findCourseAndReviewsByStudentId(instructorDAO);
 //        this.addMoreCoursesForStudent(instructorDAO);
 //        this.deleteStudentById(instructorDAO);
         return runner -> {
             addAccount(accountDAO);
-            membershipDAO.addAccount();
+            //membershipDAO.addAccount();
         };
     }
 
     private void addAccount(AccountDAO accountDAO) {
         Employee employee = new Employee("John","Sam","john@gmail.com","engineer");
+        accountDAO.setBalance(3);
+        accountDAO.getBalance();
+        System.out.println("call addAccount");
         accountDAO.addAccount(employee,true);
     }
 

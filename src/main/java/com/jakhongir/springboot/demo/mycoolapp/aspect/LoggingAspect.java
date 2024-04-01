@@ -8,10 +8,10 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class LoggingAspect {
-    @Before("execution(public void add*(com.jakhongir.springboot.demo.mycoolapp.entity.Employee, ..))")
-    public void beforeAddAccount() {
-        System.out.println("Before add account log something");
-    }
+//    @Before("execution(public void add*(com.jakhongir.springboot.demo.mycoolapp.entity.Employee, ..))")
+//    public void beforeAddAccount() {
+//        System.out.println("Before add account log something");
+//    }
 
 //    @Before("execution(* com.jakhongir.springboot.demo.mycoolapp.dao.*.*(..))")
 //    public void beforeAnyMethodInDaoPackage() {
@@ -19,15 +19,33 @@ public class LoggingAspect {
 //    }
 
     @Pointcut("execution(* com.jakhongir.springboot.demo.mycoolapp.dao.*.*(..))")
-    private void forDaoPackage() {}
+    private void forDaoPackage() {
+    }
 
-    @Before("forDaoPackage()")
+    @Pointcut("execution(* com.jakhongir.springboot.demo.mycoolapp.dao.*.get*(..))")
+    private void getter() {
+        System.out.println("has getter");
+    }
+
+    @Pointcut("execution(* com.jakhongir.springboot.demo.mycoolapp.dao.*.set*(..))")
+    private void setter() {
+        System.out.println("has setter");
+    }
+
+    @Pointcut("forDaoPackage() && !(getter() || setter())")
+    private void forDaoPackageNoSetterNoGetter() {}
+
+    @Before("forDaoPackageNoSetterNoGetter()")
     public void performApiAnalysis() {
         System.out.println("Perform api analysis !");
     }
 
-    @Before("forDaoPackage()")
+    @Before("forDaoPackageNoSetterNoGetter()")
     public void addingLogs() {
         System.out.println("Adding logs !");
     }
+
+
+
+
 }
