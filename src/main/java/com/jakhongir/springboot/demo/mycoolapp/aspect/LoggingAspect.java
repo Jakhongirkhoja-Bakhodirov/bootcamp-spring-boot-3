@@ -3,10 +3,12 @@ package com.jakhongir.springboot.demo.mycoolapp.aspect;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
+@Order(2)
 public class LoggingAspect {
 //    @Before("execution(public void add*(com.jakhongir.springboot.demo.mycoolapp.entity.Employee, ..))")
 //    public void beforeAddAccount() {
@@ -35,17 +37,13 @@ public class LoggingAspect {
     @Pointcut("forDaoPackage() && !(getter() || setter())")
     private void forDaoPackageNoSetterNoGetter() {}
 
-    @Before("forDaoPackageNoSetterNoGetter()")
-    public void performApiAnalysis() {
-        System.out.println("Perform api analysis !");
-    }
+//    @Before("forDaoPackageNoSetterNoGetter()")
+//    public void performApiAnalysis() {
+//        System.out.println("Perform api analysis !");
+//    }
 
     @Before("forDaoPackageNoSetterNoGetter()")
     public void addingLogs() {
         System.out.println("Adding logs !");
     }
-
-
-
-
 }
