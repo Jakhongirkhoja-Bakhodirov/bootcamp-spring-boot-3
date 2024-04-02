@@ -1,12 +1,15 @@
 package com.jakhongir.springboot.demo.mycoolapp.aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @Aspect
 @Component
@@ -55,5 +58,14 @@ public class LoggingAspect {
     @Before("forDaoPackageNoSetterNoGetter()")
     public void addingLogs() {
         System.out.println("Adding logs !");
+    }
+
+    @Pointcut("execution(* com.jakhongir.springboot.demo.mycoolapp.dao.*.findAccount(..))")
+    private void findAccountLog() {
+    }
+
+    @AfterReturning(pointcut = "findAccountLog()", returning = "result")
+    public void addingLogsAfterFindAccount(JoinPoint joinPoint, List result) {
+        System.out.println("after returning");
     }
 }

@@ -45,9 +45,14 @@ public class MycoolappApplication {
 //        this.addMoreCoursesForStudent(instructorDAO);
 //        this.deleteStudentById(instructorDAO);
         return runner -> {
-            addAccount(accountDAO);
+          //  addAccount(accountDAO);
+            findAccounts(accountDAO);
             //membershipDAO.addAccount();
         };
+    }
+
+    private void findAccounts(AccountDAO accountDAO) {
+        accountDAO.findAccounts();
     }
 
     private void addAccount(AccountDAO accountDAO) {
