@@ -66,6 +66,9 @@ public class LoggingAspect {
 
     @AfterReturning(pointcut = "findAccountLog()", returning = "result")
     public void addingLogsAfterFindAccount(JoinPoint joinPoint, List result) {
+        String method = joinPoint.getSignature().toShortString();
+        System.out.println("Executing @AfterReturning on method: " + method);
+        System.out.println("Result"+result);
         System.out.println("after returning");
     }
 }
