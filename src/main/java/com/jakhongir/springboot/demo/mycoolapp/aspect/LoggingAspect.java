@@ -60,7 +60,7 @@ public class LoggingAspect {
         System.out.println("Adding logs !");
     }
 
-    @Pointcut("execution(* com.jakhongir.springboot.demo.mycoolapp.dao.*.findAccount(..))")
+    @Pointcut("execution(* com.jakhongir.springboot.demo.mycoolapp.dao.*.findAccounts(..))")
     private void findAccountLog() {
     }
 
