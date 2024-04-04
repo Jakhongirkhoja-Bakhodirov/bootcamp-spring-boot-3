@@ -1,5 +1,6 @@
 package com.jakhongir.springboot.demo.mycoolapp.aspect;
 
+import com.jakhongir.springboot.demo.mycoolapp.entity.Employee;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -65,10 +66,19 @@ public class LoggingAspect {
     }
 
     @AfterReturning(pointcut = "findAccountLog()", returning = "result")
-    public void addingLogsAfterFindAccount(JoinPoint joinPoint, List result) {
+    public void addingLogsAfterFindAccount(JoinPoint joinPoint, List<Employee> result) {
         String method = joinPoint.getSignature().toShortString();
         System.out.println("Executing @AfterReturning on method: " + method);
         System.out.println("Result"+result);
         System.out.println("after returning");
+    }
+
+    private void convertEmployeeFirstNameToUpperCase(List<Employee> result) {
+        for (Employee employee:result) {
+            System.out.println(employee);
+            String upperFirstName = employee.getFirstName().toUpperCase();
+            employee.setFirstName(upperFirstName);
+            System.out.println(employee);
+        }
     }
 }
