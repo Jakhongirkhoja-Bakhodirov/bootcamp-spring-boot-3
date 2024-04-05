@@ -87,4 +87,9 @@ public class LoggingAspect {
     public void logExceptionOnFindAccounts(JoinPoint joinPoint, Throwable exception) {
         System.out.println("More about exception" + exception.toString());
     }
+
+    @After("execution(public * com.jakhongir.springboot.demo.mycoolapp.dao.*.findAccounts(..))")
+    public void logOnAfterAdvice(JoinPoint joinPoint) {
+        System.out.println("log on after advice "+joinPoint.getSignature());
+    }
 }
