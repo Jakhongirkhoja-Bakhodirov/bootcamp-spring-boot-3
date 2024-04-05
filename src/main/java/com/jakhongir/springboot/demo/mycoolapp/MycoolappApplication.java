@@ -51,8 +51,8 @@ public class MycoolappApplication {
         };
     }
 
-    private void findAccounts(AccountDAO accountDAO) {
-        accountDAO.findAccounts();
+    private void findAccounts(AccountDAO accountDAO) throws Exception {
+        accountDAO.findAccounts(false);
     }
 
     private void addAccount(AccountDAO accountDAO) {
