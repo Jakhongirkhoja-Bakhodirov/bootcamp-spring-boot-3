@@ -8,6 +8,7 @@ import com.jakhongir.springboot.demo.mycoolapp.entity.Course;
 import com.jakhongir.springboot.demo.mycoolapp.entity.Instructor;
 import com.jakhongir.springboot.demo.mycoolapp.entity.InstructorDetail;
 import com.jakhongir.springboot.demo.mycoolapp.entity.Review;
+import com.jakhongir.springboot.demo.mycoolapp.service.TrafficFortuneService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,7 +24,7 @@ public class MycoolappApplication {
     }
 
     @Bean
-    public CommandLineRunner commandLineRunner(InstructorDAO instructorDAO, AccountDAO accountDAO, MembershipDAO membershipDAO) {
+    public CommandLineRunner commandLineRunner(InstructorDAO instructorDAO, AccountDAO accountDAO, MembershipDAO membershipDAO, TrafficFortuneService trafficFortuneService) {
 //        this.createInstructor(instructorDAO);
 //        this.findInstructor(instructorDAO);
 //        this.deleteInstructor(instructorDAO);
@@ -45,22 +46,32 @@ public class MycoolappApplication {
 //        this.addMoreCoursesForStudent(instructorDAO);
 //        this.deleteStudentById(instructorDAO);
         return runner -> {
-          //  addAccount(accountDAO);
-            findAccounts(accountDAO);
+            //  addAccount(accountDAO);
+//            findAccounts(accountDAO);
             //membershipDAO.addAccount();
+//            demoTheAroundAdvice(trafficFortuneService);
+            demoTheAroundAdviceWithHandlingException(trafficFortuneService);
         };
     }
 
-    private void findAccounts(AccountDAO accountDAO) {
-        accountDAO.findAccounts();
+    private void demoTheAroundAdviceWithHandlingException(TrafficFortuneService trafficFortuneService) throws Exception {
+        String data = trafficFortuneService.getFortune(true);
+    }
+
+    private void demoTheAroundAdvice(TrafficFortuneService trafficFortuneService) {
+        trafficFortuneService.getFortune();
+    }
+
+    private void findAccounts(AccountDAO accountDAO) throws Exception {
+        accountDAO.findAccounts(false);
     }
 
     private void addAccount(AccountDAO accountDAO) {
-        Employee employee = new Employee("John","Sam","john@gmail.com","engineer");
+        Employee employee = new Employee("John", "Sam", "john@gmail.com", "engineer");
         accountDAO.setBalance(3);
         accountDAO.getBalance();
         System.out.println("call addAccount");
-        accountDAO.addAccount(employee,true);
+        accountDAO.addAccount(employee, true);
     }
 
     private void deleteStudentById(InstructorDAO instructorDAO) {

@@ -1,10 +1,9 @@
 package com.jakhongir.springboot.demo.mycoolapp.aspect;
 
+import com.jakhongir.springboot.demo.mycoolapp.entity.Employee;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -65,10 +64,61 @@ public class LoggingAspect {
     }
 
     @AfterReturning(pointcut = "findAccountLog()", returning = "result")
-    public void addingLogsAfterFindAccount(JoinPoint joinPoint, List result) {
+    public void addingLogsAfterFindAccount(JoinPoint joinPoint, List<Employee> result) {
         String method = joinPoint.getSignature().toShortString();
         System.out.println("Executing @AfterReturning on method: " + method);
-        System.out.println("Result"+result);
+        System.out.println("Result" + result);
         System.out.println("after returning");
+    }
+
+    private void convertEmployeeFirstNameToUpperCase(List<Employee> result) {
+        for (Employee employee : result) {
+            System.out.println(employee);
+            String upperFirstName = employee.getFirstName().toUpperCase();
+            employee.setFirstName(upperFirstName);
+            System.out.println(employee);
+        }
+    }
+
+    @Pointcut("execution(public * com.jakhongir.springboot.demo.mycoolapp.dao.*.findAccounts(..))")
+    private void hasExceptionToLogFindAccounts() {
+    }
+
+    @AfterThrowing(pointcut = "hasExceptionToLogFindAccounts()", throwing = "exception")
+    public void logExceptionOnFindAccounts(JoinPoint joinPoint, Throwable exception) {
+        System.out.println("More about exception" + exception.toString());
+    }
+
+    @After("execution(public * com.jakhongir.springboot.demo.mycoolapp.dao.*.findAccounts(..))")
+    public void logOnAfterAdvice(JoinPoint joinPoint) {
+        System.out.println("log on after advice " + joinPoint.getSignature());
+    }
+
+    @Around("execution(* com.jakhongir.springboot.demo.mycoolapp.service.*.getFortune(..))")
+    public Object aroundGetFortune(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        try {
+            // print out method we're advising on
+            String methodSignature = proceedingJoinPoint.getSignature().toShortString();
+            System.out.println("Advising method " + methodSignature);
+
+            // get begin timestamp
+            long begin = System.currentTimeMillis();
+
+            // now, let's execute the method
+            Object result = proceedingJoinPoint.proceed();
+
+            // get end timestamp
+            long end = System.currentTimeMillis();
+
+            long duration = end - begin;
+
+            // compute duration and display it
+            System.out.println("Duration: " + duration / 1000 + " seconds");
+
+            return result;
+        } catch (Exception throwable) {
+            System.out.println("Something went wrong " + throwable.getMessage());
+        }
+        return null;
     }
 }

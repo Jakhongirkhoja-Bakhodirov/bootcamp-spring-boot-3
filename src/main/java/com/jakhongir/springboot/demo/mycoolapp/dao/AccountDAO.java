@@ -11,5 +11,5 @@ public interface AccountDAO {
 
     public int getBalance();
 
-    List findAccounts();
+    List findAccounts(boolean isActive) throws Exception;
 }
